@@ -36,7 +36,7 @@ The project is a backend for a messenger with support for:
 ---
 
 ## Project Structure
-
+```text
 backend/
 ├── auth/              # JWT logic & dependencies
 ├── models/            # SQLModel database models
@@ -53,6 +53,7 @@ frontend/
 ├── auth.js
 ├── register.js
 ├── styles.css
+```
 
 ---
 
@@ -66,14 +67,14 @@ frontend/
 
 ## Chat Flow
 
-	- User selects a chat room
-	- Frontend:
+	1. User selects a chat room
+	2. Frontend:
 	    - fetches last messages via HTTP
 	    - opens WebSocket connection
-	- Messages are:
+	3. Messages are:
 	    - broadcasted to room participants
 	    - saved to database
-	-New users see last messages on join
+	4. New users see last messages on join
 
 ## Future Improvements
 
@@ -88,7 +89,7 @@ frontend/
 ## Built by K1r1eWka
 
 Learning-focused project to deeply understand:
-	•	WebSocket architecture
-	•	Authentication & authorization
-	•	Backend + frontend interaction
-	•	Real-time systems
+	-	WebSocket architecture
+	-	Authentication & authorization
+	-	Backend + frontend interaction
+	-	Real-time systems
