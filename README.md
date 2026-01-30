@@ -87,9 +87,8 @@ frontend/
 	-	Docker & docker-compose
 
 ## Built by K1r1eWka
-
 Learning-focused project to deeply understand:
-	-	WebSocket architecture
-	-	Authentication & authorization
-	-	Backend + frontend interaction
-	-	Real-time systems
+    -   WebSocket architecture
+    -   Authentication & authorization
+    -   Backend + frontend interaction
+    -   Real-time systems
