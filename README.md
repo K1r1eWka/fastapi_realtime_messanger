@@ -37,7 +37,6 @@ The project is a backend for a messenger with support for:
 
 ## Project Structure
 
-```text
 backend/
 ├── auth/              # JWT logic & dependencies
 ├── models/            # SQLModel database models
@@ -58,6 +57,7 @@ frontend/
 ---
 
 ## Project Structure
+
     1.	User registers via HTTP (POST /register)
     2.	User logs in via HTTP (POST /login)
     3.	Server creates JWT and stores it in HttpOnly    cookie
@@ -65,6 +65,7 @@ frontend/
     5.	Server validates token and links:
 
 ## Chat Flow
+
 	- User selects a chat room
 	- Frontend:
 	    - fetches last messages via HTTP
@@ -74,7 +75,8 @@ frontend/
 	    - saved to database
 	-New users see last messages on join
 
- Future Improvements
+## Future Improvements
+
 	-	Private 1-to-1 chats
 	-	User invitations
 	-	Message read status
@@ -83,7 +85,8 @@ frontend/
 	-	Pagination for chat history
 	-	Docker & docker-compose
 
-Built by K1r1eWka
+## Built by K1r1eWka
+
 Learning-focused project to deeply understand:
 	•	WebSocket architecture
 	•	Authentication & authorization
