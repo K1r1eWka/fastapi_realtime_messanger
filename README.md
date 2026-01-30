@@ -65,6 +65,8 @@ frontend/
     4.	Browser automatically sends cookie: to protected HTTP endpoints to WebSocket connection
     5.	Server validates token and links:
 
+---
+
 ## Chat Flow
 
 	1. User selects a chat room
@@ -76,19 +78,25 @@ frontend/
 	    - saved to database
 	4. New users see last messages on join
 
+---
+
 ## Future Improvements
 
-	-	Private 1-to-1 chats
-	-	User invitations
-	-	Message read status
-    -   Real time video and audio calls
-	-	Typing indicators
-	-	Pagination for chat history
-	-	Docker & docker-compose
+- Private 1-to-1 chats
+- Creating new chat rooms
+- User invitations
+- Message read status
+- Real time video and audio calls
+- Typing indicators
+- Pagination for chat history
+- Docker and docker-compose
 
-## Built by K1r1eWka
-Learning-focused project to deeply understand:
-    -   WebSocket architecture
-    -   Authentication & authorization
-    -   Backend + frontend interaction
-    -   Real-time systems
+---
+
+## Built by K1r1eWka, Learning-focused project to deeply understand:
+- WebSocket architecture
+- Authentication and authorization
+- Backend + frontend interaction
+- Real-time systems
+
+---
