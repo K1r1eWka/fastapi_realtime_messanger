@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Register</title>
+    <style>
+        :root{
+            --bg1:#eef2ff;
+            --bg2:#f7fbff;
+            --card:#ffffff;
+            --accent:#4f46e5;
+            --muted:#6b7280;
+            --danger:#ef4444;
+            --radius:12px;
+        }
+
+        html,body{
+            height:100%;
+            margin:0;
+            font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(135deg,var(--bg1),var(--bg2));
+            color:#0f172a;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        /* center container */
+        .wrap{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:24px;
+            box-sizing:border-box;
+        }
+
+        /* card / form */
+        .card{
+            width:100%;
+            max-width:420px;
+            background:var(--card);
+            border-radius:var(--radius);
+            padding:28px;
+            box-shadow:0 8px 30px rgba(2,6,23,0.08);
+            border:1px solid rgba(15,23,42,0.04);
+        }
+
+        h1{
+            margin:0 0 8px 0;
+            font-size:20px;
+            font-weight:600;
+            color:#0b1220;
+        }
+        p.lead{
+            margin:0 0 18px 0;
+            color:var(--muted);
+            font-size:13px;
+        }
+
+        form {
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        label{
+            font-size:13px;
+            color:#0b1220;
+            margin-bottom:6px;
+            display:block;
+        }
+
+        .field{
+            display:flex;
+            flex-direction:column;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"]{
+            width:100%;
+            padding:10px 12px;
+            font-size:14px;
+            border:1px solid rgba(15,23,42,0.08);
+            border-radius:8px;
+            background:transparent;
+            outline:none;
+            transition:box-shadow .15s, border-color .15s;
+            box-sizing:border-box;
+        }
+
+        input:focus{
+            border-color:var(--accent);
+            box-shadow:0 4px 16px rgba(79,70,229,0.12);
+        }
+
+        .row{
+            display:flex;
+            gap:10px;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .toggle-password{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            font-size:13px;
+            color:var(--muted);
+            cursor:pointer;
+            user-select:none;
+        }
+
+        .error{
+            color:var(--danger);
+            font-size:12px;
+            margin-top:6px;
+        }
+
+        button[type="submit"]{
+            background:var(--accent);
+            color:white;
+            border:none;
+            padding:10px 14px;
+            border-radius:10px;
+            font-weight:600;
+            font-size:15px;
+            cursor:pointer;
+            margin-top:6px;
+            transition:transform .08s ease, box-shadow .08s;
+        }
+        button[type="submit"]:active{ transform:translateY(1px); }
+        button[type="submit"]:hover{ box-shadow:0 8px 20px rgba(79,70,229,0.12); }
+
+        .small{
+            font-size:13px;
+            color:var(--muted);
+            text-align:center;
+            margin-top:10px;
+        }
+
+        @media (max-width:420px){
+            .card{ padding:18px; border-radius:10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <main class="card" role="main" aria-labelledby="register-title">
+            <h1 id="register-title">Create an account</h1>
+            <p class="lead">Register with a username, email and a secure password.</p>
+
+            <form id="registerForm" action="#" method="post" novalidate>
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required minlength="2" placeholder="Your username">
+                    <div class="error" id="usernameError" aria-live="polite"></div>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+                    <div class="error" id="emailError" aria-live="polite"></div>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters">
+                    <div class="row" style="margin-top:6px;">
+                        <label class="toggle-password"><input id="showPwd" type="checkbox" aria-label="Show password"> Show password</label>
+                        <div class="small" style="margin:0">Min length: 8</div>
+                    </div>
+                    <div class="error" id="passwordError" aria-live="polite"></div>
+                </div>
+                <div class="error" id="registrationMessage" aria-live="polite" style="margin-top:10px; color: red;"></div>
+                <button type="submit">Register</button>
+            </form>
+
+            <div class="small">Already have an account? <a href="#" style="color:var(--accent); text-decoration:none;">Sign in</a></div>
+        </main>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html></div>

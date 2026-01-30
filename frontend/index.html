@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chat rooms</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="card" role="main">
+        <h1>Select a channel</h1>
+        <div class="btn-row" role="group" aria-label="Channels">
+            <button class="primary" id="general" onclick="connectToRoom('1')">general</button>
+            <button class="secondary" id="support" onclick="connectToRoom('2')">support</button>
+            <button class="ghost" id="chat_room" onclick="connectToRoom('3')">chat_room</button>
+        </div><br>
+        <div id="status"></div><br>
+        <input id="messageInput" type="text" placeholder="Type message..." />
+        <button onclick="sendMessage()">Send</button>
+        <div id="messages"></div>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
