@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Cookie, Depends, Response, HTTPException, status
-from sqlmodel import select
+from sqlmodel import select # noqa
 from backend.core.security import (
     hash_password,
     verify_password,
     create_access_token
 )
 from backend.core.config import security_settings   
-import jwt
+import jwt # noqa
 from backend.db.database import SessionDep, User
 
 from backend.schemas.user import UserCreate, UserLogin
@@ -14,6 +14,18 @@ from backend.schemas.user import UserCreate, UserLogin
 
 
 router = APIRouter()
+
+@router.get("/all_users")
+async def all_users(session: SessionDep):
+    statement = select(User)
+    users = session.exec(statement).all()
+    return [
+        {
+            "id": user.id,
+            "username": user.username
+        }
+        for user in users
+    ]
 
 
 
@@ -75,7 +87,7 @@ async def login(data: UserLogin, response: Response, session: SessionDep) -> dic
     return {"message": "Login successful"}
     
 
-# TODO need to fix this dependencies function to protect all endpoints with JWT token
+# TODOneed to fix this dependencies function to protect all endpoints with JWT token
 def get_current_user(access_token: str = Cookie(None)):
     if not access_token:
         raise HTTPException(status_code=401)

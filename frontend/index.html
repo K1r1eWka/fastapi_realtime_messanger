@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <main class="card" role="main">
-        <h1>Select a channel</h1>
-        <div class="btn-row" role="group" aria-label="Channels">
-            <button class="primary" id="general" onclick="connectToRoom('1')">general</button>
-            <button class="secondary" id="support" onclick="connectToRoom('2')">support</button>
-            <button class="ghost" id="chat_room" onclick="connectToRoom('3')">chat_room</button>
-        </div><br>
-        <div id="status"></div><br>
-        <input id="messageInput" type="text" placeholder="Type message..." />
-        <button onclick="sendMessage()">Send</button>
-        <div id="messages"></div>
+    <div class="layout" style="display:flex; gap:16px; align-items:flex-start;">
+        <main class="card" role="main" style="flex:1;">
+            <h1>Select a channel</h1>
+            <div class="btn-row" role="group" aria-label="Channels">
+                <button class="primary" id="general" onclick="connectToRoom('1')">general</button>
+                <button class="secondary" id="support" onclick="connectToRoom('2')">support</button>
+                <button class="ghost" id="chat_room" onclick="connectToRoom('3')">chat_room</button>
+            </div><br>
+            <div id="status"></div><br>
+            <input id="messageInput" type="text" placeholder="Type message..." />
+            <button onclick="sendMessage()">Send</button>
+            <div id="messages"></div>
+        </main>
 
-    </main>
+        <aside class="users-panel card" role="complementary" aria-label="Users" style="width:260px;">
+            <h2>Users</h2>
+            <div id="usersList" class="users-list" aria-live="polite">
+
+      
+            </div>
+        </aside>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
