@@ -8,7 +8,7 @@ from backend.core.security import (
 from backend.core.config import security_settings   
 import jwt # noqa
 from backend.db.database import User
-from backend.dependencies import SessionDep
+from backend.dependencies import SessionDep, UserServiceDep
 
 from backend.schemas.user import UserCreate, UserLogin
 
@@ -31,29 +31,9 @@ async def all_users(session: SessionDep):
 
 
 @router.post("/register")
-async def register(data: UserCreate, session: SessionDep):
+async def register(data: UserCreate, service: UserServiceDep):
+    return await service.register_new_user(data)
 
-    statement = select(User).where(User.username == data.username)
-    result = session.exec(statement)
-    user = result.first()
-
-    if user:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="User already exists"
-        )
-
-    # create a new user using User model (sqlmodel)
-    user = User(
-        username=data.username,
-        email=data.email,
-        password_hash=hash_password(data.password)
-    )
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-
-    return {"message": "User registered successfully"}
 
 
 
