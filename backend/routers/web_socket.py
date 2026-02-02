@@ -5,7 +5,7 @@ from sqlmodel import select
 from backend.core.config import security_settings
 import jwt
 
-from backend.db.database import SessionDep
+from backend.dependencies import SessionDep
 from backend.models.message import Message
 from backend.models.user import User
 

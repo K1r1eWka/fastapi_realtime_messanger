@@ -7,7 +7,8 @@ from backend.core.security import (
 )
 from backend.core.config import security_settings   
 import jwt # noqa
-from backend.db.database import SessionDep, User
+from backend.db.database import User
+from backend.dependencies import SessionDep
 
 from backend.schemas.user import UserCreate, UserLogin
 
