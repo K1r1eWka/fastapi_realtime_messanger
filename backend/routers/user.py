@@ -10,11 +10,12 @@ import jwt # noqa
 from backend.db.database import User
 from backend.dependencies import SessionDep, UserServiceDep
 
-from backend.schemas.user import UserCreate, UserLogin
+from backend.schemas.auth import UserLogin, UserRegister
+from backend.schemas.user import UserCreate
 
 
 
-router = APIRouter()
+router = APIRouter(tags=["User"])
 
 @router.get("/all_users")
 async def all_users(session: SessionDep):
@@ -35,40 +36,14 @@ async def register(data: UserCreate, service: UserServiceDep):
     return await service.register_new_user(data)
 
 
-
-
-
 @router.post("/login")
-async def login(data: UserLogin, response: Response, session: SessionDep) -> dict[str, str]:
-
-    statement = select(User).where(User.username == data.username)
-    result = session.exec(statement)
-    user = result.first()
+async def login(data: UserLogin, response: Response, service: UserServiceDep) -> dict[str, str]:
+    return await service.login_user(data, response)
     
-    if not user: 
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, 
-            detail="Invalid username or password"
-            )
-    if not verify_password(data.password, user.password_hash):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, 
-            detail="Invalid username or password"
-            )
-
-    token = create_access_token({"user_id": user.id, "username": user.username})
-
-    response.set_cookie(
-        key="access_token",
-        value=token,
-        httponly=True,
-        samesite="lax"
-    )
-
-    return {"message": "Login successful"}
+    
     
 
-# TODOneed to fix this dependencies function to protect all endpoints with JWT token
+# TODO need to fix this dependencies function to protect all endpoints with JWT token
 def get_current_user(access_token: str = Cookie(None)):
     if not access_token:
         raise HTTPException(status_code=401)

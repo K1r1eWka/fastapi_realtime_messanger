@@ -12,7 +12,7 @@ class UserRegister(BaseModel):
     password: str = Field(example="password")
 
 class UserLogin(BaseModel):
-    email: str = Field(example="user@example.com")
+    username: str = Field(example="user@example.com")
     password: str = Field(example="password")
 
 class UserOut(BaseModel):
